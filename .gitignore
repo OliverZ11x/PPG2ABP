@@ -1,0 +1,27 @@
+# project files
+__pycache__/
+
+
+# result files
+data/
+models/
+processed_data/
+raw_data/
+abps/
+History/
+ppgs/
+~$results.xlsx
+result.txt
+
+
+# Repo-specific GitIgnore
+
+*.jpg
+*.jpeg
+*.png
+*.JPG
+*.JPEG
+*.pdf
+*.csv
+*.p
+*.hdf5

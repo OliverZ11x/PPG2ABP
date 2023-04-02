@@ -2,10 +2,10 @@
     Models used in experiments
 """
 
-from keras.layers import Input, Conv1D, MaxPooling1D, UpSampling1D, concatenate, BatchNormalization, Activation, add
-from keras.models import Model, model_from_json
-from keras.optimizers import Adam
-from keras.callbacks import ModelCheckpoint
+from tensorflow.keras.layers import Input, Conv1D, MaxPooling1D, UpSampling1D, concatenate, BatchNormalization, Activation, add
+from tensorflow.keras.models import Model, model_from_json
+from tensorflow.keras.optimizers import Adam
+from tensorflow.keras.callbacks import ModelCheckpoint
 
 def UNet(length, n_channel=1):
     """

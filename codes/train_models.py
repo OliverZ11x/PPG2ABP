@@ -12,7 +12,7 @@ import time
 from tqdm import tqdm
 import pickle
 import os
-from keras.optimizers import Adam
+from tensorflow.keras.optimizers import Adam
 
 def train_approximate_network():
     """
@@ -46,7 +46,7 @@ def train_approximate_network():
         pass
 
                                                                     # 10 fold cross validation
-    for foldname in range(10):
+    for foldname in range(1):
 
         print('----------------')
         print('Training Fold {}'.format(foldname+1))
@@ -84,12 +84,13 @@ def train_approximate_network():
                                                                         # train approximation network for 100 epochs
         history1 = mdl1.fit(X_train,{'out': Y_train['out'], 'level1': Y_train['level1'], 'level2':Y_train['level2'], 'level3':Y_train['level3'] , 'level4':Y_train['level4']},epochs=100,batch_size=256,validation_data=(X_val,{'out': Y_val['out'], 'level1': Y_val['level1'], 'level2':Y_val['level2'], 'level3':Y_val['level3'] , 'level4':Y_val['level4']}),callbacks=[checkpoint1_],verbose=1)
 
-        pickle.dump(history1, open('History/{}_model1_fold{}.p'.format(mdlName1,foldname),'wb'))    # save training history
+        pickle.dump(history1.history, open('History/{}_model1_fold{}.p'.format(mdlName1,foldname),'wb'))    # save training history
 
+        # save_model(history1, open('History/{}_model1_fold{}.p'.format(mdlName1,foldname),'wb'))       # save training history
 
         mdl1 = None                                             # garbage collection
 
-        time.sleep(300)                                         # pause execution for a while to free the gpu
+        time.sleep(10)                                          # pause execution for a while to free the gpu
     
 
 

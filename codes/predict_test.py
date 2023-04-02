@@ -21,7 +21,7 @@ def predict_test_data():
 
 
     mdl1 = UNetDS64(length)                                             # creating approximation network
-    mdl1.load_weights(os.path.join('models','ApproximateNetwork.h5'))   # loading weights
+    mdl1.load_weights(os.path.join('models','UNetDS64_model1_fold0.h5'))   # loading weights
     
     Y_test_pred_approximate = mdl1.predict(X_test,verbose=1)            # predicting approximate abp waveform
 
@@ -29,7 +29,7 @@ def predict_test_data():
 
 
     mdl2 = MultiResUNet1D(length)                                       # creating refinement network
-    mdl2.load_weights(os.path.join('models','RefinementNetwork.h5'))    # loading weights
+    mdl2.load_weights(os.path.join('models','MultiResUNet1D_model2_fold0.h5'))    # loading weights
 
     Y_test_pred = mdl2.predict(Y_test_pred_approximate[0],verbose=1)    # predicting abp waveform
 
